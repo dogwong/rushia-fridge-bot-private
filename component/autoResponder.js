@@ -110,6 +110,8 @@ async function init(discordInstance) {
         } else if (content.indexOf("平") >= 0) {
           message.reply(`吓？你講多次？`);
 
+        } else if (content.indexOf("星街") >= 0) {
+          message.reply(`<@${message.author.id}> 今天也很小 <:rushia_yandere4:940325425538797598>`);
         } else if (content.indexOf("團長") >= 0) {
           message.reply(`<@${message.author.id}> 呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
         } else if (content.indexOf("pekora") >= 0) {
@@ -127,7 +129,7 @@ async function init(discordInstance) {
         } else if (content.indexOf("かなた") >= 0) {
           message.channel.send(`點解要提起其他女人 <:rushia_cry:933156110741946408>`);
         } else if (content.indexOf("kanata") >= 0) {
-          message.channel.send(`呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
+          message.channel.send(`<@${message.author.id}> 呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
         } else if (content.indexOf("るしあ") >= 0) {
           message.reply(`<@${message.author.id}> 你咁掛住我，我好開心❤️❤️❤️ <:rushia_nya:937372390705487984>`);
         } else if (content.indexOf("rushia") >= 0) {
@@ -136,11 +138,14 @@ async function init(discordInstance) {
         } else if (content.indexOf("こんるし") >= 0) {
           message.reply(`<@${message.author.id}> 我好掛住你，你喺邊呀❤️❤️❤️ <:rushia_yandere:933141388147691570>`);
         } else if (content.indexOf("早晨") >= 0) {
-          message.reply(`早晨，今天也要好好陪るしあ哦❤️`);
+          message.reply(`早晨～今天也要好好陪るしあ哦❤️`);
         } else if (content.indexOf("hi") >= 0) {
           message.reply(`こんるし～今天要陪るしあ嗎？`);
         } else if (content.indexOf("早抖") >= 0) {
+          message.reply(`今天辛苦了～祝你發個boing boing夢 <:rushia_nya:937372390705487984>`);
+        } else if (content.indexOf("瞓") >= 0) {
           message.reply(`おつるし～祝你發個boing boing夢 <:rushia_nya:937372390705487984>`);
+          
         } else if (content.indexOf("boing") >= 0) {
           message.channel.send(`<@${message.author.id}> social credit +50`);
         // } else if (content.indexOf("") >= 0) {
