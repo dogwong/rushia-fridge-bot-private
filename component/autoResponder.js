@@ -120,6 +120,10 @@ async function init(discordInstance) {
           message.channel.send(`呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
         } else if (content.indexOf("nene") >= 0) {
           message.channel.send(`點解要提起其他女人 <:rushia_cry:933156110741946408>`);
+        } else if (content.indexOf("桃鈴") >= 0) {
+          message.channel.send(`<@${message.author.id}> 呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
+        } else if (content.indexOf("音音") >= 0) {
+          message.channel.send(`<@${message.author.id}> 呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
         } else if (content.indexOf("かなた") >= 0) {
           message.channel.send(`點解要提起其他女人 <:rushia_cry:933156110741946408>`);
         } else if (content.indexOf("kanata") >= 0) {
