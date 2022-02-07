@@ -79,7 +79,14 @@ async function init(discordInstance) {
         });
 
       } else {
-        if (content.indexOf("砧板") >= 0) {
+        if (content.indexOf("若凌") >= 0) {
+          message.channel.send(`<:word_1_waka:939216597149687809> <:word_2_ryou:939216597317476483> <:word_3_se:939216597149712466> <:word_4_ichi:939216597468463144> `);
+        } else if (content.indexOf("猩") >= 0) {
+          message.channel.send(`<:ppt_gorilla:937763398303776889> `);
+        } else if (content.indexOf("gorilla") >= 0) {
+          message.channel.send(`<:ppt_gorilla:937763398303776889> `);
+
+        } else if (content.indexOf("砧板") >= 0) {
           message.reply(`<@${message.author.id}> 今晚送你去見羽衣媽媽 <a:rushia_dare:939596214796697661>`);
         } else if (content.indexOf("平板") >= 0) {
           message.reply(`<@${message.author.id}> 今晚瞓雪櫃 <:rushia_yandere:933141388147691570>`);
@@ -110,10 +117,6 @@ async function init(discordInstance) {
           message.reply(`<@${message.author.id}> 你咁掛住我，我好開心❤️❤️❤️ <:rushia_nya:937372390705487984>`);
         } else if (content.indexOf("rushia") >= 0) {
           message.reply(`你掛住るしあ嗎？`);
-        } else if (content.indexOf("猩") >= 0) {
-          message.reply(`<:ppt_gorilla:937763398303776889> `);
-        } else if (content.indexOf("gorilla") >= 0) {
-          message.reply(`<:ppt_gorilla:937763398303776889> `);
 
         } else if (content.indexOf("こんるし") >= 0) {
           message.reply(`<@${message.author.id}> 我好掛住你，你喺邊呀❤️❤️❤️ <:rushia_yandere:933141388147691570>`);
@@ -125,8 +128,6 @@ async function init(discordInstance) {
           message.reply(`おつるし～祝你發個boing boing夢 <:rushia_nya:937372390705487984>`);
         } else if (content.indexOf("boing") >= 0) {
           message.channel.send(`<@${message.author.id}> social credit +50`);
-        } else if (content.indexOf("若凌") >= 0) {
-          message.channel.send(`<:word_1_waka:939216597149687809> <:word_2_ryou:939216597317476483> <:word_3_se:939216597149712466> <:word_4_ichi:939216597468463144> `);
         // } else if (content.indexOf("") >= 0) {
         //   message.channel.send(`<@${message.author.id}> `);
         }
