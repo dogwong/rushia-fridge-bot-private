@@ -6,7 +6,7 @@
 # docker build -t rushia-fridge-bot:latest .
 ### docker image rm rushia-fridge-bot
 
-# docker run -it --name rushia-fridge-bot --restart always -v /usr/src/rushia-fridge-bot:/usr/src/rushia-fridge-bot --link alpine-mariadb:db rushia-fridge-bot:latest --log-driver local --log-opt max-size=10m --log-opt max-file=3
+# docker run -it --name rushia-fridge-bot --restart always -v /usr/src/rushia-fridge-bot:/usr/src/rushia-fridge-bot rushia-fridge-bot:latest --log-driver local --log-opt max-size=10m --log-opt max-file=3
 # or --restart on-failure
 
 

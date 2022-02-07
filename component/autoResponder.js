@@ -10,7 +10,6 @@ async function init(discordInstance) {
 
   let guild = await client.guilds.fetch("919202470125797426");
   let emojis = await guild.emojis.fetch();
-  guild.emojis
 
   console.log("emoji ok", emojis);
 

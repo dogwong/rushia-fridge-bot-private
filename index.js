@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "local-dev.env" });
+require("dotenv").config();
 const fs = require("fs");
 const dayjs = require("dayjs");
 const cron = require("node-cron");
