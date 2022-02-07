@@ -3,6 +3,12 @@ const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 /** @type {import("discord.js").Client} */
 let client;
 
+function shutdown () {
+  setTimeout(() => {
+    process.exit();
+  }, 1000);
+}
+
 async function init(discordInstance) {
   client = discordInstance;
 
@@ -11,7 +17,9 @@ async function init(discordInstance) {
   let guild = await client.guilds.fetch("919202470125797426");
   let emojis = await guild.emojis.fetch();
 
-  console.log("emoji ok", emojis);
+  const channelText = await client.channels.cache.get("935999729672802344"); // 試bot
+
+  channelText.send(`こんるし！`);
 
 
   client.on("messageCreate", async message => {
@@ -29,7 +37,10 @@ async function init(discordInstance) {
       let allowedRole = message.member.roles.cache.has("919614615938289764") || 
         message.author.id === "177732847422013440"; // me
 
-      if (allowedRole && content.startsWith("send ")) {
+      if (message.channelId === "935999729672802344" && message.author.id === "177732847422013440" && message?.content === "restart") { // 試bot
+        await message.reply("またね！");
+        shutdown();
+      } else if (allowedRole && content.startsWith("send ")) {
         let result = /^send <#(\d+)> (.*)/igs.exec(content);
         console.log("result", result);
 
