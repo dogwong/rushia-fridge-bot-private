@@ -1,7 +1,7 @@
 # BUILD IMAGE
 # 1. pull
-# 2. git update-index --chmod=+x <.sh file>
-# (2. chmod +x docker-entrypoint.sh)
+# 2. run "git update-index --chmod=+x <.sh file>" on Windows and commit push permission change
+# (2. server side: chmod +x docker-entrypoint.sh)
 # 3. check .env exists
 # docker build -t rushia-fridge-bot:latest .
 ### docker image rm rushia-fridge-bot
