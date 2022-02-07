@@ -111,7 +111,7 @@ async function init(discordInstance) {
           message.reply(`吓？你講多次？`);
 
         } else if (content.indexOf("星街") >= 0) {
-          message.reply(`<@${message.author.id}> 今天也很小 <:rushia_yandere4:940325425538797598>`);
+          message.channel.send(`<@${message.author.id}> 今天也很小 <:rushia_yandere4:940325425538797598>`);
         } else if (content.indexOf("團長") >= 0) {
           message.reply(`<@${message.author.id}> 呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
         } else if (content.indexOf("pekora") >= 0) {
