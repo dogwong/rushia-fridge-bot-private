@@ -101,12 +101,22 @@ async function init(discordInstance) {
           message.channel.send(`呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
         } else if (content.indexOf("nene") >= 0) {
           message.channel.send(`點解要提起其他女人 <:rushia_cry:933156110741946408>`);
+        } else if (content.indexOf("かなた") >= 0) {
+          message.channel.send(`點解要提起其他女人 <:rushia_cry:933156110741946408>`);
+        } else if (content.indexOf("kanata") >= 0) {
+          message.channel.send(`呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
         } else if (content.indexOf("るしあ") >= 0) {
           message.reply(`<@${message.author.id}> 你咁掛住我，我好開心❤️❤️❤️ <:rushia_nya:937372390705487984>`);
         } else if (content.indexOf("rushia") >= 0) {
           message.reply(`你掛住我嗎？`);
         } else if (content.indexOf("こんるし") >= 0) {
           message.reply(`<@${message.author.id}> 我好掛住你，你喺邊呀❤️❤️❤️ <:rushia_yandere:933141388147691570>`);
+        } else if (content.indexOf("早晨") >= 0) {
+          message.reply(`早晨，今天也要好好陪るしあ哦❤️`);
+        } else if (content.indexOf("hi") >= 0) {
+          message.reply(`こんるし～你要陪るしあ嗎？`);
+        } else if (content.indexOf("早抖") >= 0) {
+          message.reply(`おつるし～祝你發個boing boing夢 <:rushia_nya:937372390705487984>`);
         } else if (content.indexOf("boing") >= 0) {
           message.channel.send(`<@${message.author.id}> social credit +50`);
         } else if (content.indexOf("若凌") >= 0) {
