@@ -141,7 +141,9 @@ async function init(discordInstance) {
         } else if (lowerContent.indexOf("早晨") >= 0) {
           message.reply(`早晨～今天也要好好陪るしあ哦❤️`);
         } else if (lowerContent.indexOf("hi") >= 0) {
-          message.reply(`こんるし～今天要陪るしあ嗎？`);
+          if (!/<a?:\w+hi\w+:\d+>/ig.test(content)){ // within emoji name
+            message.reply(`こんるし～今天要陪るしあ嗎？`);
+          }
         } else if (lowerContent.indexOf("早抖") >= 0) {
           message.reply(`今天辛苦了～祝你發個boing boing夢 <:rushia_nya:937372390705487984>`);
         } else if (lowerContent.indexOf("瞓") >= 0) {
