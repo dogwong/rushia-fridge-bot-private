@@ -14,12 +14,19 @@ async function init(discordInstance) {
 
   console.log("autoResponder init");
 
+  let isBotEnabled = true;
+  let isTestMode = process.env["TEST_MODE"] ? true : false;
+
   let guild = await client.guilds.fetch("919202470125797426");
   let emojis = await guild.emojis.fetch();
 
   const channelText = await client.channels.cache.get("935999729672802344"); // 試bot
 
-  channelText.send(`こんるし！ (bot started up)`);
+  if (isTestMode) {
+    channelText.send(`[:warning: TESTING MODE] こんるし！ (bot started up)`);
+  } else {
+    channelText.send(`こんるし！ (bot started up)`);
+  }
 
 
   client.on("messageCreate", async message => {
@@ -31,7 +38,10 @@ async function init(discordInstance) {
 
     if (message.content) {
       const content = message.content;
-
+      let replyPrefix = "";
+      if (isTestMode) {
+        replyPrefix = "[:warning: TESTING MODE] ";
+      }
       // role filter
       
       let allowedRole = message.member.roles.cache.has("919614615938289764") || 
@@ -89,7 +99,34 @@ async function init(discordInstance) {
           }
         });
 
-      } else {
+      } else if (message.channelId === "935999729672802344" && content.startsWith("<@")) {
+        let result = /<@!?939564813842010152> (.*)/igs.exec(content);
+        if (!result || result.length !== 2) return;
+
+        if (result[1] === "on") {
+          if (isBotEnabled) {
+            message.reply("自動回覆已經開啟");
+          } else {
+            isBotEnabled = true;
+            message.reply("開啟自動回覆");
+            // client.user.setPresence({
+            //   status: "online",
+            // });
+          }
+        } else if (result[1] === "off") {
+          if (isBotEnabled) {
+            isBotEnabled = false;
+            message.reply("關閉自動回覆");
+            // client.user.setPresence({
+            //   status: "idle",
+            // });
+            // client.user.setStatus("idle");
+          } else {
+            message.reply("自動回覆已經關閉");
+          }
+        }
+
+      } else if (!isTestMode || (isTestMode && message.channelId === "935999729672802344")) {
         const allowedChannel = [
           "935999729672802344", // 試bot
           "939808103837347860", // 試bot - test
@@ -104,13 +141,17 @@ async function init(discordInstance) {
         const lowerContent = content.toLowerCase();
         if (lowerContent.indexOf("若凌") >= 0) {
           message.channel.send(`<:word_1_waka:939216597149687809> <:word_2_ryou:939216597317476483> <:word_3_se:939216597149712466> <:word_4_ichi:939216597468463144> `);
+        } else if (lowerContent.indexOf("waka") >= 0) {
+          message.channel.send(`<:word_1_waka:939216597149687809> <:word_2_ryou:939216597317476483> <:word_3_se:939216597149712466> <:word_4_ichi:939216597468463144> `);
+        } else if (lowerContent.indexOf("ryou") >= 0) {
+          message.channel.send(`<:word_1_waka:939216597149687809> <:word_2_ryou:939216597317476483> <:word_3_se:939216597149712466> <:word_4_ichi:939216597468463144> `);
         } else if (lowerContent.indexOf("猩") >= 0) {
-          message.channel.send(`<:ppt_gorilla:937763398303776889> `);
+          message.channel.send(`<:ppt_gorilla:937763398303776889>`);
         } else if (lowerContent.indexOf("gorilla") >= 0) {
-          message.channel.send(`<:ppt_gorilla:937763398303776889> `);
+          message.channel.send(`<:ppt_gorilla:937763398303776889>`);
         }
 
-        if (allowedChannel) {
+        if ((!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === "935999729672802344")) {
           if (lowerContent.indexOf("砧板") >= 0) {
             message.reply(`<@${message.author.id}> 今晚送你去見羽衣媽媽 <a:rushia_dare:939596214796697661>`);
           } else if (lowerContent.indexOf("平板") >= 0) {
