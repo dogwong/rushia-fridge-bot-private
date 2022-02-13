@@ -198,7 +198,11 @@ async function init(discordInstance) {
             message.reply(`<@${message.author.id}> 我好掛住你，你喺邊呀❤️❤️❤️ <:rushia_yandere:933141388147691570>`);
           } else if (lowerContent.indexOf("早晨") >= 0) {
             message.reply(`早晨～今天也要好好陪るしあ哦❤️`);
-          } else if (lowerContent.indexOf("hi") >= 0) {
+          // } else if (lowerContent.indexOf("hi") >= 0) {
+          //   if (!/<a?:\w+hi\w+:\d+>/ig.test(content)){ // within emoji name
+          //     message.reply(`こんるし～今天要陪るしあ嗎？`);
+          //   }
+          } else if (lowerContent.indexOf("rushia") >= 0) {
             if (!/<a?:\w+hi\w+:\d+>/ig.test(content)){ // within emoji name
               message.reply(`こんるし～今天要陪るしあ嗎？`);
             }
