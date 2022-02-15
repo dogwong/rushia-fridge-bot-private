@@ -137,6 +137,7 @@ async function init(discordInstance) {
           "923306378020421672", // 點唱站
           "931180514293981284", // 可以澀澀！
           "923557754667421726", // 眾籌參與者討論區
+          "943172731338366996", // 打氣區
         ].includes(message.channelId);
         const lowerContent = content.toLowerCase();
         if (lowerContent.indexOf("若凌") >= 0) {
