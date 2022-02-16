@@ -1,7 +1,13 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+const dayjs = require("dayjs");
+const utc = require('dayjs/plugin/utc');
+dayjs.extend(utc);
+const simpleGit = require('simple-git')();
 
 /** @type {import("discord.js").Client} */
 let client;
+
+const COMMAND_CHANNEL = "943436102134530098";
 
 function shutdown () {
   setTimeout(() => {
@@ -14,19 +20,68 @@ async function init(discordInstance) {
 
   console.log("autoResponder init");
 
+  console.log("Getting git commit info...");
+  let botCommitId = "";
+  /** @type {import("dayjs").Dayjs} */
+  let botLastUpdate;
+  let botCommitCount = "";
+  await new Promise((resolve, reject) => {
+    simpleGit.revparse(["HEAD"], (err, result) => {
+      if (err) {
+        console.log("get commit id failed");
+      } else {
+        botCommitId = result;
+        console.log("rev", result);
+      }
+      resolve();
+    });
+  });
+  await new Promise((resolve, reject) => {
+    simpleGit.log({"-1": null}, (err, result) => {
+      if (err) {
+        console.log("get commit time failed");
+      } else {
+        botLastUpdate = dayjs(result.latest.date, "YYYY-MM-DD HH:mm:ss Z");
+        console.log("date", result.latest.date);
+      }
+      resolve();
+    });
+  });
+  await new Promise((resolve, reject) => {
+    simpleGit.raw(["rev-list", "--count", "HEAD"], (err, result) => {
+      if (err) {
+        console.log("get commit count failed");
+      } else {
+        botCommitCount = (result).trim()
+        console.log("count", result);
+      }
+      resolve();
+    });
+  });
+
+  console.log("Getting git commit info done", botCommitId, botLastUpdate, botCommitCount);
+
   let isBotEnabled = true;
   let isTestMode = process.env["TEST_MODE"] ? true : false;
 
   let guild = await client.guilds.fetch("919202470125797426");
   let emojis = await guild.emojis.fetch();
 
-  const channelText = await client.channels.cache.get("935999729672802344"); // 試bot
+  const channelText = await client.channels.cache.get(COMMAND_CHANNEL); // 指令
 
+  let replyPrefix = "";
   if (isTestMode) {
-    channelText.send(`[:warning: TESTING MODE] こんるし！ (bot started up)`);
+    replyPrefix = "[:warning: TEST MODE] ";
+    await channelText.send(replyPrefix + `こんるし！ (bot started up)`);
   } else {
-    channelText.send(`こんるし！ (bot started up)`);
+    await channelText.send(replyPrefix + `こんるし！ (bot started up)\nrev \`${botCommitId.substring(0, 7)} , version ${botCommitCount}\` @ ${botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm")}`);
   }
+
+  process.on('SIGINT', async function () {
+    console.log("SIGINT received, please wait...");
+    await message.reply(replyPrefix + "またね！ (bot stopping)");
+    shutdown();
+  });
 
 
   client.on("messageCreate", async message => {
@@ -38,17 +93,13 @@ async function init(discordInstance) {
 
     if (message.content) {
       const content = message.content;
-      let replyPrefix = "";
-      if (isTestMode) {
-        replyPrefix = "[:warning: TESTING MODE] ";
-      }
       // role filter
       
       let allowedRole = message.member.roles.cache.has("919614615938289764") || 
         message.author.id === "177732847422013440"; // me
 
-      if (message.channelId === "935999729672802344" && message.author.id === "177732847422013440" && message?.content === "restart") { // 試bot
-        await message.reply("またね！ (bot shutting down)");
+      if (message.channelId === COMMAND_CHANNEL && message.author.id === "177732847422013440" && message?.content === "restart") { // 指令
+        await message.reply(replyPrefix + "またね！ (bot shutting down)");
         shutdown();
       } else if (allowedRole && content.startsWith("send ")) {
         let result = /^send <#(\d+)> (.*)/igs.exec(content);
@@ -88,14 +139,14 @@ async function init(discordInstance) {
             });
 
           } else {
-            message.reply(`<#${result[1]}> 不是文字頻道`);
+            message.reply(replyPrefix + `<#${result[1]}> 不是文字頻道`);
           }
         })
         .catch(e => {
           if (e.httpStatus === 404) {
-            message.reply(`錯誤: 找不到頻道 (\`${result[1]}\`) 請檢查bot是否有檢視該頻道的權限`);
+            message.reply(replyPrefix + `錯誤: 找不到頻道 (\`${result[1]}\`) 請檢查bot是否有檢視該頻道的權限`);
           } else {
-            message.reply(`錯誤: ${e?.code} (${e?.httpStatus}) ${e.name}\n${e?.message}`);
+            message.reply(replyPrefix + `錯誤: ${e?.code} (${e?.httpStatus}) ${e.name}\n${e?.message}`);
           }
         });
 
@@ -126,8 +177,9 @@ async function init(discordInstance) {
           }
         }
 
-      } else if (!isTestMode || (isTestMode && message.channelId === "935999729672802344")) {
+      } else if (!isTestMode || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
         const allowedChannel = [
+          "943436102134530098", // 指令
           "935999729672802344", // 試bot
           "939808103837347860", // 試bot - test
           "923190510670213121", // v豚討論區
@@ -152,7 +204,7 @@ async function init(discordInstance) {
           message.channel.send(replyPrefix + `<:ppt_gorilla:937763398303776889>`);
         }
 
-        if ((!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === "935999729672802344")) {
+        if ((!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
           if (lowerContent.indexOf("砧板") >= 0) {
             message.reply(replyPrefix + `<@${message.author.id}> 今晚送你去見羽衣媽媽 <a:rushia_dare:939596214796697661>`);
           } else if (lowerContent.indexOf("平板") >= 0) {
