@@ -74,12 +74,12 @@ async function init(discordInstance) {
     replyPrefix = "[:warning: TEST MODE] ";
     await channelText.send(replyPrefix + `こんるし！ (bot started up)`);
   } else {
-    await channelText.send(replyPrefix + `こんるし！ (bot started up)\nrev \`${botCommitId.substring(0, 7)} , version ${botCommitCount}\` @ ${botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm")}`);
+    await channelText.send(replyPrefix + `こんるし！ (bot started up)\nrev \`${botCommitId.substring(0, 7)}\` , version ${botCommitCount} @ ${botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm")}`);
   }
 
   process.on('SIGINT', async function () {
     console.log("SIGINT received, please wait...");
-    await message.reply(replyPrefix + "またね！ (bot stopping)");
+    await channelText.send(replyPrefix + "またね！ (bot stopping)");
     shutdown();
   });
 
