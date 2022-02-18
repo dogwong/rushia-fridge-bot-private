@@ -3,6 +3,7 @@ const dayjs = require("dayjs");
 const utc = require('dayjs/plugin/utc');
 dayjs.extend(utc);
 const simpleGit = require('simple-git')();
+const fs = require("fs");
 
 /** @type {import("discord.js").Client} */
 let client;
@@ -20,7 +21,7 @@ async function init(discordInstance) {
 
   console.log("autoResponder init");
 
-  console.log("Getting git commit info...");
+  console.log("Reading git commit info...");
   let botCommitId = "";
   /** @type {import("dayjs").Dayjs} */
   let botLastUpdate;
@@ -59,7 +60,36 @@ async function init(discordInstance) {
     });
   });
 
-  console.log("Getting git commit info done", botCommitId, botLastUpdate, botCommitCount);
+  console.log("Read git commit info done", botCommitId, botCommitCount, botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm"));
+
+  console.log("Reading auto responses...");
+  let responseTxt = fs.readFileSync("./component/responses.txt", "utf8");
+  let responseList = responseTxt.split("\n").map(response => {
+    let result = /^(\d{3})\(\((.*)\)\)(.*)/igs.exec(response);
+    if (result?.length === 4) {
+      let code = result[1];
+      let ignoreEmoji = code[1] == "1" ? true : false;
+      let useReply = code[2] == "1" ? true : false;
+      let regexp = new RegExp();
+
+      if (ignoreEmoji) {
+        regexp = new RegExp(`/<a?:\w+${result[2].toLowerCase()}\w+:\d+>/ig`);
+      }
+
+      return {
+        code: result[1],
+        ignoreEmoji: ignoreEmoji,
+        regexp,
+        useReply,
+        keyword: result[2].toLowerCase(),
+        reply: result[3].trim(),
+      };
+    }
+    return null;
+  }).filter(response => response);
+
+  console.log(responseList);
+
 
   let isBotEnabled = true;
   let isTestMode = process.env["TEST_MODE"] ? true : false;
@@ -72,9 +102,9 @@ async function init(discordInstance) {
   let replyPrefix = "";
   if (isTestMode) {
     replyPrefix = "[:warning: TEST MODE] ";
-    await channelText.send(replyPrefix + `こんるし！ (bot started up)`);
+    await channelText.send(replyPrefix + `こんるし！ (bot started up)\n自動回覆條件 ${responseList.length} 個`);
   } else {
-    await channelText.send(replyPrefix + `こんるし！ (bot started up)\nrev \`${botCommitId.substring(0, 7)}\` , version ${botCommitCount} @ ${botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm")}`);
+    await channelText.send(replyPrefix + `こんるし！ (bot started up)\nrev \`${botCommitId.substring(0, 7)}\` , version ${botCommitCount} @ ${botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm")}\n自動回覆條件 ${responseList.length} 個`);
   }
 
   process.on('SIGINT', async function () {
@@ -191,83 +221,49 @@ async function init(discordInstance) {
           "923557754667421726", // 眾籌參與者討論區
           "943172731338366996", // 打氣區
         ].includes(message.channelId);
-        const lowerContent = content.toLowerCase();
-        if (lowerContent.indexOf("若凌") >= 0) {
-          message.channel.send(replyPrefix + `<:word_1_waka:939216597149687809> <:word_2_ryou:939216597317476483> <:word_3_se:939216597149712466> <:word_4_ichi:939216597468463144> `);
-        } else if (lowerContent.indexOf("waka") >= 0) {
-          message.channel.send(replyPrefix + `<:word_1_waka:939216597149687809> <:word_2_ryou:939216597317476483> <:word_3_se:939216597149712466> <:word_4_ichi:939216597468463144> `);
-        } else if (lowerContent.indexOf("ryou") >= 0) {
-          message.channel.send(replyPrefix + `<:word_1_waka:939216597149687809> <:word_2_ryou:939216597317476483> <:word_3_se:939216597149712466> <:word_4_ichi:939216597468463144> `);
-        } else if (lowerContent.indexOf("猩") >= 0) {
-          message.channel.send(replyPrefix + `<:ppt_gorilla:937763398303776889>`);
-        } else if (lowerContent.indexOf("gorilla") >= 0) {
-          message.channel.send(replyPrefix + `<:ppt_gorilla:937763398303776889>`);
-        }
+        let lowerContent = content.toLowerCase();
+        const noEmojiContent = lowerContent.replace(/<a?:\w+:\d+/g, "");
 
-        if ((!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
-          if (lowerContent.indexOf("砧板") >= 0) {
-            message.reply(replyPrefix + `<@${message.author.id}> 今晚送你去見羽衣媽媽 <a:rushia_dare:939596214796697661>`);
-          } else if (lowerContent.indexOf("平板") >= 0) {
-            message.reply(replyPrefix + `<@${message.author.id}> 今晚瞓雪櫃 <:rushia_yandere:933141388147691570>`);
-          } else if (lowerContent.indexOf("雪櫃") >= 0) {
-            message.reply(replyPrefix + `你係咪好掛住我部雪櫃呢 <:rushia_yandere:933141388147691570>`);
-          } else if (lowerContent.indexOf("冰箱") >= 0) {
-            message.reply(replyPrefix + `你鍾意我部雪櫃嗎？`);
-          } else if (lowerContent.indexOf("冷蔵庫") >= 0) {
-            message.reply(replyPrefix + `<@${message.author.id}> 係咪好想入雪櫃？今晚你去陪羽衣媽媽啦，佢好寂寞`);
-          // } else if (lowerContent.indexOf("平") >= 0) {
-          //   message.reply(`吓？你講多次？`);
-  
-          } else if (lowerContent.indexOf("星街") >= 0) {
-            message.channel.send(replyPrefix + `<@${message.author.id}> 今天也很小 <:rushia_yandere4:940325425538797598>`);
-          } else if (lowerContent.indexOf("團長") >= 0) {
-            message.reply(replyPrefix + `<@${message.author.id}> 呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
-          } else if (lowerContent.indexOf("pekora") >= 0) {
-            message.reply(replyPrefix + `<@${message.author.id}> 呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
-          } else if (lowerContent.indexOf("peko") >= 0) {
-            message.reply(replyPrefix + `點解要提起其他女人 <:rushia_cry:933156110741946408> `);
-          } else if (lowerContent.indexOf("ねね") >= 0) {
-            message.reply(replyPrefix + `呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
-          } else if (lowerContent.indexOf("nene") >= 0) {
-            message.reply(replyPrefix + `點解要提起其他女人 <:rushia_cry:933156110741946408>`);
-          } else if (lowerContent.indexOf("桃鈴") >= 0) {
-            message.reply(replyPrefix + `<@${message.author.id}> 呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
-          } else if (lowerContent.indexOf("音音") >= 0) {
-            message.reply(replyPrefix + `<@${message.author.id}> 呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
-          } else if (lowerContent.indexOf("かなた") >= 0) {
-            message.reply(replyPrefix + `點解要提起其他女人 <:rushia_cry:933156110741946408>`);
-          } else if (lowerContent.indexOf("kanata") >= 0) {
-            message.reply(replyPrefix + `<@${message.author.id}> 呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
-          } else if (lowerContent.indexOf("fubuki") >= 0) {
-            message.reply(replyPrefix + `<@${message.author.id}> 呢個女人係邊個 <a:rushia_dare:939596214796697661>`);
-          } else if (lowerContent.indexOf("fbk") >= 0) {
-            message.reply(replyPrefix + `點解要提起其他女人 <:rushia_cry:933156110741946408>`);
-          } else if (lowerContent.indexOf("るしあ") >= 0) {
-            message.reply(replyPrefix + `<@${message.author.id}> 你咁掛住我，我好開心❤️❤️❤️ <:rushia_nya:937372390705487984>`);
-          } else if (lowerContent.indexOf("rushia") >= 0) {
-            if (!/<a?:\w+hi\w+:\d+>/ig.test(content)){ // within emoji name
-              message.reply(replyPrefix + `你掛住るしあ嗎？`);
+        // search through the list
+        for (let i = 0; i < responseList.length; i++) {
+          const trigger = responseList[i];
+          let ok = false;
+
+          // detect keyword within emoji
+          if (trigger.ignoreEmoji) {
+            lowerContent = noEmojiContent;            
+          } else {
+            if (!lowerContent.includes(trigger.keyword)) {
+              continue;
             }
-  
-          } else if (lowerContent.indexOf("こんるし") >= 0) {
-            message.reply(replyPrefix + `<@${message.author.id}> 我好掛住你，你喺邊呀❤️❤️❤️ <:rushia_yandere:933141388147691570>`);
-          } else if (lowerContent.indexOf("早晨") >= 0) {
-            message.reply(replyPrefix + `早晨～今天也要好好陪るしあ哦❤️`);
-          } else if (lowerContent.indexOf("hi") === 0) {
-              message.reply(replyPrefix + `こんるし～今天要陪るしあ嗎？`);
-          } else if (lowerContent.indexOf("早抖") >= 0) {
-            message.reply(replyPrefix + `おつるし～祝你發個boing boing夢 <:rushia_nya:937372390705487984>`);
-          } else if (lowerContent.indexOf("瞓") >= 0) {
-            message.reply(replyPrefix + `今天辛苦了～今晚要陪るしあ睡覺嗎❤️`);
-          } else if (lowerContent.indexOf("おつるし") >= 0) {
-            message.reply(replyPrefix + `今天辛苦了～祝你發個boing boing夢 <:rushia_nya:937372390705487984>`);
-            
-          } else if (lowerContent.indexOf("boing") >= 0) {
-            message.channel.send(replyPrefix + `<@${message.author.id}> social credit +50`);
-          } else if (lowerContent.indexOf("dogwong") >= 0) {
-            message.reply(replyPrefix + `💜💚`);
-          // } else if (content.indexOf("") >= 0) {
-          //   message.channel.send(`<@${message.author.id}> `);
+          }
+          // contains keyword
+          let index = lowerContent.indexOf(trigger.keyword);
+
+          // check keyword position
+          // "文字完全符合", 1, "文字包含", 2, "文字開頭為", 3, "文字結尾為", 4, "其他(起註備寫)", 5
+          if (trigger.code[0] == "1" && index === 0 && lowerContent.length == trigger.keyword.length) {
+            ok = true;
+          } else if (trigger.code[0] == "2" && index >= 0) {
+            ok = true;
+          } else if (trigger.code[0] == "3" && index === 0) {
+            ok = true;
+          } else if (trigger.code[0] == "4" && index === lowerContent.length - trigger.keyword.length) {
+            ok = true;
+          }
+
+          if (!ok) {
+            continue;
+          }
+
+          // channel filter
+          if (i <= 4 || (!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
+            let reply = `${trigger.reply.replace("<@>", `<@${message.author.id}>`)}`;
+            if (trigger.useReply) {
+              message.reply(replyPrefix + `${reply}`);
+            } else {
+              message.channel.send(replyPrefix + `${reply}`);
+            }
           }
         }
         
