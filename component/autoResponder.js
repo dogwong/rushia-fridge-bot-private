@@ -264,6 +264,7 @@ async function init(discordInstance) {
             } else {
               message.channel.send(replyPrefix + `${reply}`);
             }
+            break;
           }
         }
         
