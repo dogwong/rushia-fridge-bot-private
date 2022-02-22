@@ -180,7 +180,7 @@ async function init(discordInstance) {
           }
         });
 
-      } else if (message.channelId === "935999729672802344" && content.startsWith("<@")) {
+      } else if (message.channelId === COMMAND_CHANNEL && content.startsWith("<@")) {
         let result = /<@!?939564813842010152> (.*)/igs.exec(content);
         if (!result || result.length !== 2) return;
 
