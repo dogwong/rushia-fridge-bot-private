@@ -65,11 +65,15 @@ async function init(discordInstance) {
   console.log("Reading auto responses...");
   let responseTxt = fs.readFileSync("./component/responses.txt", "utf8");
   let responseList = responseTxt.split("\n").map(response => {
-    let result = /^(\d{3})\(\((.*)\)\)(.*)/igs.exec(response);
-    if (result?.length === 4) {
-      let code = result[1];
-      let ignoreEmoji = code[1] == "1" ? true : false;
-      let useReply = code[2] == "1" ? true : false;
+    try {
+      let responseObj = JSON.parse(response);
+
+      if (!responseObj.code || (!responseObj.text_reply && !responseObj.file_reply)) {
+        return null;
+      }
+
+      let ignoreEmoji = responseObj.code[1] == "1" ? true : false;
+      let useReply = responseObj.code[2] == "1" ? true : false;
       let regexp = new RegExp();
 
       if (ignoreEmoji) {
@@ -77,14 +81,18 @@ async function init(discordInstance) {
       }
 
       return {
-        code: result[1],
+        code: responseObj.code,
         ignoreEmoji: ignoreEmoji,
         regexp,
         useReply,
-        keyword: result[2].toLowerCase(),
-        reply: result[3].trim(),
+        keyword: responseObj.keyword.toLowerCase(),
+        reply: responseObj.text_reply.trim(),
+        fileReply: responseObj.file_reply.trim(),
       };
+    } catch (error) {
+      console.log("parse response failed", error);
     }
+    
     return null;
   }).filter(response => response);
 
@@ -259,10 +267,16 @@ async function init(discordInstance) {
           // channel filter
           if (i <= 4 || (!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
             let reply = `${trigger.reply.replace("<@>", `<@${message.author.id}>`)}`;
+            let options = {
+              content: replyPrefix + `${reply}`,
+            };
+            if (trigger.fileReply) {
+              options.files = [trigger.fileReply];
+            }
             if (trigger.useReply) {
-              message.reply(replyPrefix + `${reply}`);
+              message.reply(options);
             } else {
-              message.channel.send(replyPrefix + `${reply}`);
+              message.channel.send(options);
             }
             break;
           }
