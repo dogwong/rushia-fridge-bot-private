@@ -99,7 +99,7 @@ async function init(discordInstance) {
   console.log(responseList);
 
 
-  let isBotEnabled = true;
+  let isBotEnabled = false;
   let isTestMode = process.env["TEST_MODE"] ? true : false;
 
   let guild = await client.guilds.fetch("919202470125797426");

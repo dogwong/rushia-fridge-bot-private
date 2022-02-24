@@ -28,6 +28,7 @@ client.once('ready', async () => {
   
   require("./component/autoResponder").init(client);
   
+  client.user.setStatus('idle');
 });
 
 
