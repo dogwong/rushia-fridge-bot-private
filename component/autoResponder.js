@@ -99,7 +99,7 @@ async function init(discordInstance) {
   console.log(responseList);
 
 
-  let isBotEnabled = false;
+  let isBotEnabled = true;
   let isTestMode = process.env["TEST_MODE"] ? true : false;
 
   let guild = await client.guilds.fetch("919202470125797426");
@@ -265,7 +265,7 @@ async function init(discordInstance) {
           }
 
           // channel filter
-          if (i <= 4 || (!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
+          if (i < 9 || (!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
             let reply = `${trigger.reply.replace("<@>", `<@${message.author.id}>`)}`;
             let options = {
               content: replyPrefix + `${reply}`,
