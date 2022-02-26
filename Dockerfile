@@ -5,6 +5,7 @@
 # 3. check .env exists
 # docker build -t rushia-fridge-bot:latest .
 ### docker image rm rushia-fridge-bot
+# 4. confirm not using local env, eg require("dotenv").config({ path: "local-dev.env" });
 
 # docker run -it --name rushia-fridge-bot --restart always -v /usr/src/rushia-fridge-bot:/usr/src/rushia-fridge-bot rushia-fridge-bot:latest --log-driver local --log-opt max-size=10m --log-opt max-file=3
 # or --restart on-failure
