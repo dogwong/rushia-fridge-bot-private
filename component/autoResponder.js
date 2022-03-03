@@ -134,56 +134,11 @@ async function init(discordInstance) {
       let allowedRole = message.member.roles.cache.has("919614615938289764") || 
         message.author.id === "177732847422013440"; // me
 
-      if (allowedRole && content.startsWith("send ")) {
-        let result = /^send <#(\d+)> (.*)/igs.exec(content);
-        console.log("result", result);
+      // if (allowedRole && content.startsWith("send ")) {
+        
 
-        if (!result || result.length !== 3) return;
-
-        // check if channel exists
-        message.guild.channels.fetch(result[1]).then(channel => {
-          
-          if (channel.isText()) {
-            const row = new MessageActionRow()
-              .addComponents(
-                new MessageButton()
-                  .setCustomId(`sd confirm`)
-                  .setLabel("確定")
-                  .setStyle("PRIMARY"),
-                new MessageButton()
-                  .setCustomId(`sd cancel`)
-                  .setLabel("取消")
-                  .setStyle("SECONDARY"),
-              );
-            const embed = new MessageEmbed()
-              .setColor("#77d4bc")
-              .setTitle(`確認發送`)
-              .setDescription(result[2])
-              .setFields([{
-                name: `至 #${channel.name} ?`,
-                value: `${channel.id}`,
-              }]);
-
-            message.reply({
-              embeds: [
-                embed,
-              ],
-              components: [row],
-            });
-
-          } else {
-            message.reply(replyPrefix + `<#${result[1]}> 不是文字頻道`);
-          }
-        })
-        .catch(e => {
-          if (e.httpStatus === 404) {
-            message.reply(replyPrefix + `錯誤: 找不到頻道 (\`${result[1]}\`) 請檢查bot是否有檢視該頻道的權限`);
-          } else {
-            message.reply(replyPrefix + `錯誤: ${e?.code} (${e?.httpStatus}) ${e.name}\n${e?.message}`);
-          }
-        });
-
-      } else if (message.channelId === COMMAND_CHANNEL && content.startsWith("<@")) {
+      // } else 
+      if (allowedRole && message.channelId === COMMAND_CHANNEL && content.startsWith("<@")) {
         let regexp = new RegExp(`^<@!?${client.user.id}> (.*)`, "igs");
         let result = regexp.exec(content);
 
@@ -213,6 +168,54 @@ async function init(discordInstance) {
         } else if (message.author.id === "177732847422013440" && result[1] === "restart") {
           await message.reply(replyPrefix + `${STRINGS.shutdown} (bot shutting down)`);
           shutdown();
+        } else if (result[1].startsWith("send ")) {
+          let command = /^send <#(\d+)> (.*)/igs.exec(result[1]);
+          console.log("result", command);
+
+          if (!command || command.length !== 3) return;
+
+          // check if channel exists
+          message.guild.channels.fetch(command[1]).then(channel => {
+            
+            if (channel.isText()) {
+              const row = new MessageActionRow()
+                .addComponents(
+                  new MessageButton()
+                    .setCustomId(`sd confirm`)
+                    .setLabel("確定")
+                    .setStyle("PRIMARY"),
+                  new MessageButton()
+                    .setCustomId(`sd cancel`)
+                    .setLabel("取消")
+                    .setStyle("SECONDARY"),
+                );
+              const embed = new MessageEmbed()
+                .setColor("#77d4bc")
+                .setTitle(`確認發送`)
+                .setDescription(command[2])
+                .setFields([{
+                  name: `至 #${channel.name} ?`,
+                  value: `${channel.id}`,
+                }]);
+
+              message.reply({
+                embeds: [
+                  embed,
+                ],
+                components: [row],
+              });
+
+            } else {
+              message.reply(replyPrefix + `<#${command[1]}> 不是文字頻道`);
+            }
+          })
+          .catch(e => {
+            if (e.httpStatus === 404) {
+              message.reply(replyPrefix + `錯誤: 找不到頻道 (\`${command[1]}\`) 請檢查bot是否有檢視該頻道的權限`);
+            } else {
+              message.reply(replyPrefix + `錯誤: ${e?.code} (${e?.httpStatus}) ${e.name}\n${e?.message}`);
+            }
+          });
         }
 
       } else if (!isTestMode || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
