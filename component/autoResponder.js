@@ -76,16 +76,10 @@ async function init(discordInstance) {
 
       let ignoreEmoji = responseObj.code[1] == "1" ? true : false;
       let useReply = responseObj.code[2] == "1" ? true : false;
-      let regexp = new RegExp();
-
-      if (ignoreEmoji) {
-        regexp = new RegExp(`/<a?:\w+${responseObj.keyword.toLowerCase()}\w+:\d+>/ig`);
-      }
 
       return {
         code: responseObj.code,
         ignoreEmoji: ignoreEmoji,
-        regexp,
         useReply,
         keyword: responseObj.keyword.toLowerCase(),
         reply: responseObj.text_reply.trim(),
@@ -138,10 +132,7 @@ async function init(discordInstance) {
       let allowedRole = message.member.roles.cache.has("919614615938289764") || 
         message.author.id === "177732847422013440"; // me
 
-      if (message.channelId === COMMAND_CHANNEL && message.author.id === "177732847422013440" && message?.content === "restart") { // 指令
-        await message.reply(replyPrefix + `${STRINGS.shutdown} (bot shutting down)`);
-        shutdown();
-      } else if (allowedRole && content.startsWith("send ")) {
+      if (allowedRole && content.startsWith("send ")) {
         let result = /^send <#(\d+)> (.*)/igs.exec(content);
         console.log("result", result);
 
@@ -191,15 +182,17 @@ async function init(discordInstance) {
         });
 
       } else if (message.channelId === COMMAND_CHANNEL && content.startsWith("<@")) {
-        let result = /<@!?939564813842010152> (.*)/igs.exec(content);
+        let regexp = new RegExp(`^<@!?${client.user.id}> (.*)`, "igs");
+        let result = regexp.exec(content);
+
         if (!result || result.length !== 2) return;
 
         if (result[1] === "on") {
           if (isBotEnabled) {
-            message.reply("自動回覆已經開啟");
+            message.reply(replyPrefix + "自動回覆已經開啟");
           } else {
             isBotEnabled = true;
-            message.reply("開啟自動回覆");
+            message.reply(replyPrefix + "開啟自動回覆");
             // client.user.setPresence({
             //   status: "online",
             // });
@@ -207,14 +200,17 @@ async function init(discordInstance) {
         } else if (result[1] === "off") {
           if (isBotEnabled) {
             isBotEnabled = false;
-            message.reply("關閉自動回覆");
+            message.reply(replyPrefix + "關閉自動回覆");
             // client.user.setPresence({
             //   status: "idle",
             // });
             // client.user.setStatus("idle");
           } else {
-            message.reply("自動回覆已經關閉");
+            message.reply(replyPrefix + "自動回覆已經關閉");
           }
+        } else if (message.author.id === "177732847422013440" && result[1] === "restart") {
+          await message.reply(replyPrefix + `${STRINGS.shutdown} (bot shutting down)`);
+          shutdown();
         }
 
       } else if (!isTestMode || (isTestMode && message.channelId === COMMAND_CHANNEL)) {

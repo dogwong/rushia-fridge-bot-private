@@ -40,20 +40,20 @@
 {"code": "201", "keyword": "平", "text_reply": "吓？你講多次？<:rushia_open_eyes:942503280121085992> ", "file_reply": ""}
 
 {"code": "200", "keyword": "星街", "text_reply": "<@> 今天也很小 <:rushia_yandere4:940325425538797598>", "file_reply": ""}
-{"code": "201", "keyword": "團長", "text_reply": "點解要提起其他女人<:rushia_cry:933156110741946408>", "file_reply": ""}
+{"code": "201", "keyword": "團長", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
 {"code": "201", "keyword": "船長", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
 {"code": "201", "keyword": "marin", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
 {"code": "201", "keyword": "noel", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
-{"code": "201", "keyword": "ぺこ", "text_reply": "點解要提起其他女人<:rushia_cry:933156110741946408>", "file_reply": ""}
+{"code": "201", "keyword": "ぺこ", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
 {"code": "201", "keyword": "peko", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
 {"code": "201", "keyword": "ねね", "text_reply": "<@> 呢個女人係邊個 <a:rushia_dare:939596214796697661>", "file_reply": ""}
-{"code": "201", "keyword": "nene", "text_reply": "點解要提起其他女人 <:rushia_cry:933156110741946408> ", "file_reply": ""}
+{"code": "201", "keyword": "nene", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
 
 
-{"code": "201", "keyword": "かなた", "text_reply": "點解要提起其他女人 <:rushia_cry:933156110741946408>", "file_reply": ""}
+{"code": "201", "keyword": "かなた", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
 {"code": "201", "keyword": "kanata", "text_reply": "<@> 呢個女人係邊個 <a:rushia_dare:939596214796697661>", "file_reply": ""}
 {"code": "201", "keyword": "fubuki", "text_reply": "<@> 呢個女人係邊個 <a:rushia_dare:939596214796697661>", "file_reply": ""}
-{"code": "201", "keyword": "fbk", "text_reply": "點解要提起其他女人 <:rushia_cry:933156110741946408>", "file_reply": ""}
+{"code": "201", "keyword": "fbk", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
 {"code": "201", "keyword": "るしあ", "text_reply": "<@> 你咁掛住我，我好開心❤️❤️❤️ <:rushia_nya:937372390705487984>", "file_reply": ""}
 {"code": "211", "keyword": "rushia", "text_reply": "<@> 我好掛住你，你喺邊呀❤️❤️❤️ <:rushia_yandere:933141388147691570> ", "file_reply": ""}
 
