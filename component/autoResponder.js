@@ -5,6 +5,8 @@ dayjs.extend(utc);
 const simpleGit = require('simple-git')();
 const fs = require("fs");
 
+const STRINGS = require("./strings.json");
+
 /** @type {import("discord.js").Client} */
 let client;
 
@@ -77,7 +79,7 @@ async function init(discordInstance) {
       let regexp = new RegExp();
 
       if (ignoreEmoji) {
-        regexp = new RegExp(`/<a?:\w+${result[2].toLowerCase()}\w+:\d+>/ig`);
+        regexp = new RegExp(`/<a?:\w+${responseObj.keyword.toLowerCase()}\w+:\d+>/ig`);
       }
 
       return {
@@ -109,15 +111,15 @@ async function init(discordInstance) {
 
   let replyPrefix = "";
   if (isTestMode) {
-    replyPrefix = "[:warning: TEST MODE] ";
-    await channelText.send(replyPrefix + `こんるし！ (bot started up)\n自動回覆條件 ${responseList.length} 個`);
+    replyPrefix = `${STRINGS.test_mode} `;
+    await channelText.send(replyPrefix + `${STRINGS.startup} (bot started up)\n自動回覆條件 ${responseList.length} 個`);
   } else {
-    await channelText.send(replyPrefix + `こんるし！ (bot started up)\nrev \`${botCommitId.substring(0, 7)}\` , version ${botCommitCount} @ ${botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm")}\n自動回覆條件 ${responseList.length} 個`);
+    await channelText.send(replyPrefix + `${STRINGS.startup} (bot started up)\nrev \`${botCommitId.substring(0, 7)}\` , version ${botCommitCount} @ ${botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm")}\n自動回覆條件 ${responseList.length} 個`);
   }
 
   process.on('SIGINT', async function () {
     console.log("SIGINT received, please wait...");
-    await channelText.send(replyPrefix + "またね！ (bot stopping)");
+    await channelText.send(replyPrefix + `${STRINGS.startup} (bot stopping)`);
     shutdown();
   });
 
@@ -137,7 +139,7 @@ async function init(discordInstance) {
         message.author.id === "177732847422013440"; // me
 
       if (message.channelId === COMMAND_CHANNEL && message.author.id === "177732847422013440" && message?.content === "restart") { // 指令
-        await message.reply(replyPrefix + "またね！ (bot shutting down)");
+        await message.reply(replyPrefix + `${STRINGS.shutdown} (bot shutting down)`);
         shutdown();
       } else if (allowedRole && content.startsWith("send ")) {
         let result = /^send <#(\d+)> (.*)/igs.exec(content);
