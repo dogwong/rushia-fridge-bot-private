@@ -75,11 +75,13 @@ async function init(discordInstance) {
       }
 
       let ignoreEmoji = responseObj.code[1] == "1" ? true : false;
-      let useReply = responseObj.code[2] == "1" ? true : false;
+      let globalEnable = responseObj.code[2] == "1" ? true : false;
+      let useReply = responseObj.code[3] == "1" ? true : false;
 
       return {
         code: responseObj.code,
         ignoreEmoji: ignoreEmoji,
+        globalEnable,
         useReply,
         keyword: responseObj.keyword.toLowerCase(),
         reply: responseObj.text_reply.trim(),
@@ -263,7 +265,7 @@ async function init(discordInstance) {
           }
 
           // channel filter
-          if (i < 9 || (!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
+          if (trigger.globalEnable || (!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
             let reply = `${trigger.reply.replace("<@>", `<@${message.author.id}>`)}`;
             let options = {
               content: replyPrefix + `${reply}`,
