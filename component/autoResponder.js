@@ -66,7 +66,9 @@ async function init(discordInstance) {
 
   console.log("Reading auto responses...");
   let responseTxt = fs.readFileSync("./component/responses.txt", "utf8");
+  let lastResponse = "";
   let responseList = responseTxt.split("\n").map(response => {
+    lastResponse = response;
     try {
       let responseObj = JSON.parse(response);
 
@@ -88,7 +90,7 @@ async function init(discordInstance) {
         fileReply: responseObj.file_reply.trim(),
       };
     } catch (error) {
-      console.log("parse response failed", error);
+      console.log("parse response failed", lastResponse, error);
     }
     
     return null;
