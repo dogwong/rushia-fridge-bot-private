@@ -236,34 +236,33 @@ async function init(discordInstance) {
           "923557754667421726", // 眾籌參與者討論區
           "943172731338366996", // 打氣區
         ].includes(message.channelId);
-        let lowerContent = content.toLowerCase();
-        const noEmojiContent = lowerContent.replace(/<a?:\w+:\d+/g, "");
+        const contentLower = content.toLowerCase();
+        const contentWithoutEmoji = contentLower.replace(/<a?:\w+:\d+/g, "");
 
         // search through the list
         for (let i = 0; i < responseList.length; i++) {
           const trigger = responseList[i];
           let ok = false;
 
+          let finalContent = "";
           // detect keyword within emoji
           if (trigger.ignoreEmoji) {
-            lowerContent = noEmojiContent;            
+            finalContent = contentWithoutEmoji;
           } else {
-            if (!lowerContent.includes(trigger.keyword)) {
-              continue;
-            }
+            finalContent = contentLower;
           }
           // contains keyword
-          let index = lowerContent.indexOf(trigger.keyword);
+          const index = finalContent.indexOf(trigger.keyword);
 
           // check keyword position
           // "文字完全符合", 1, "文字包含", 2, "文字開頭為", 3, "文字結尾為", 4, "其他(起註備寫)", 5
-          if (trigger.code[0] == "1" && index === 0 && lowerContent.length == trigger.keyword.length) {
+          if (trigger.code[0] == "1" && index === 0 && finalContent.length == trigger.keyword.length) {
             ok = true;
           } else if (trigger.code[0] == "2" && index >= 0) {
             ok = true;
           } else if (trigger.code[0] == "3" && index === 0) {
             ok = true;
-          } else if (trigger.code[0] == "4" && index === lowerContent.length - trigger.keyword.length) {
+          } else if (trigger.code[0] == "4" && index === finalContent.length - trigger.keyword.length) {
             ok = true;
           }
 
