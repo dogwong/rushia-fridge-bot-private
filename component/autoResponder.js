@@ -4,6 +4,7 @@ const utc = require('dayjs/plugin/utc');
 dayjs.extend(utc);
 const simpleGit = require('simple-git')();
 const fs = require("fs");
+const sleep = require('util').promisify(setTimeout);
 
 const STRINGS = require("./strings.json");
 
@@ -81,6 +82,7 @@ async function init(discordInstance) {
       let useReply = responseObj.code[3] == "1" ? true : false;
 
       return {
+        id: responseObj.id,
         code: responseObj.code,
         ignoreEmoji: ignoreEmoji,
         globalEnable,
@@ -277,6 +279,9 @@ async function init(discordInstance) {
             };
             if (trigger.fileReply) {
               options.files = [trigger.fileReply];
+            }
+            if (trigger.id == "delay") {
+              await sleep(1000);
             }
             if (trigger.useReply) {
               message.reply(options);
