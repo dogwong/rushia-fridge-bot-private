@@ -1,63 +1,65 @@
-{"code": "2010", "keyword": "若", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
-{"code": "2010", "keyword": "凌", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
-{"code": "2010", "keyword": "wa ka", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
-{"code": "2010", "keyword": "waka", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
-{"code": "2010", "keyword": "ryou", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": " "}
-{"code": "2010", "keyword": "わか", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
-{"code": "2010", "keyword": "りょう", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224>", "file_reply": ""}
-{"code": "2010", "keyword": "猩", "text_reply": "<:ppt_gorilla:937763398303776889> ", "file_reply": ""}
-{"code": "2010", "keyword": "gorilla", "text_reply": "<:ppt_gorilla:937763398303776889> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "若", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "凌", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "wa ka", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "waka", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "ryou", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": " "}
+{"id": "", "code": "2010", "keyword": "わか", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "りょう", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224>", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "猩", "text_reply": "<:ppt_gorilla:937763398303776889> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "gorilla", "text_reply": "<:ppt_gorilla:937763398303776889> ", "file_reply": ""}
 
 
-{"code": "2001", "keyword": "打氣", "text_reply": "今天很辛苦嗎？讓るしあ來為你打氣吧❤️", "file_reply": ""}
-{"code": "2001", "keyword": "擔心", "text_reply": "るしあ來給你打氣吧<:rushia_nya:937372390705487984>", "file_reply": ""}
-{"code": "2001", "keyword": "不安", "text_reply": "你有什麼煩惱嗎？讓るしあ陪伴你吧～❤️", "file_reply": ""}
-{"code": "2001", "keyword": "唔開心", "text_reply": "<@> 你不開心嗎？讓るしあ為你打打氣吧<:rushia_nya:937372390705487984>", "file_reply": ""}
-{"code": "2001", "keyword": "不開心", "text_reply": "<@> 你不開心嗎？讓るしあ為你打打氣吧<:rushia_nya:937372390705487984>", "file_reply": ""}
-{"code": "2001", "keyword": "傷心", "text_reply": "<@> 你不開心嗎？來！るしあ給你膝枕吧～❤️", "file_reply": ""}
-{"code": "2001", "keyword": "失望", "text_reply": "<@> 你不開心嗎？讓るしあ來安慰你吧～❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "打氣", "text_reply": "今天很辛苦嗎？讓るしあ來為你打氣吧❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "擔心", "text_reply": "るしあ來給你打氣吧<:rushia_nya:937372390705487984>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "不安", "text_reply": "你有什麼煩惱嗎？讓るしあ陪伴你吧～❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "唔開心", "text_reply": "<@> 你不開心嗎？讓るしあ為你打打氣吧<:rushia_nya:937372390705487984>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "不開心", "text_reply": "<@> 你不開心嗎？讓るしあ為你打打氣吧<:rushia_nya:937372390705487984>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "傷心", "text_reply": "<@> 你不開心嗎？來！るしあ給你膝枕吧～❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "失望", "text_reply": "<@> 你不開心嗎？讓るしあ來安慰你吧～❤️", "file_reply": ""}
 
-{"code": "2001", "keyword": "愛", "text_reply": "るしあ也愛你～最～喜～歡～了❤️", "file_reply": ""}
-{"code": "2001", "keyword": "中意", "text_reply": "るしあ也愛你～最～喜～歡～了❤️", "file_reply": ""}
-{"code": "2001", "keyword": "鍾意", "text_reply": "るしあ也愛你～最～喜～歡～了❤️", "file_reply": ""}
-{"code": "2001", "keyword": "喜歡", "text_reply": "るしあ也愛你～最～喜～歡～了❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "愛", "text_reply": "るしあ也愛你～最～喜～歡～了❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "中意", "text_reply": "るしあ也愛你～最～喜～歡～了❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "鍾意", "text_reply": "るしあ也愛你～最～喜～歡～了❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "喜歡", "text_reply": "るしあ也愛你～最～喜～歡～了❤️", "file_reply": ""}
 
-{"code": "2001", "keyword": "こんるし", "text_reply": "こんるし～今天也要好好努力哦～るしあ會為你加油的<:rushia_nya:937372390705487984>", "file_reply": ""}
-{"code": "2001", "keyword": "早晨", "text_reply": "こんるし～今天讓るしあ好好陪你吧～<:rushia_nya:937372390705487984>", "file_reply": ""}
-{"code": "2001", "keyword": "早安", "text_reply": "こんるし～今天也要好好努力哦～るしあ會為你加油的<:rushia_nya:937372390705487984>", "file_reply": ""}
-{"code": "3001", "keyword": "hi", "text_reply": "こんるし～今天也要好好陪るしあ哦❤️", "file_reply": ""}
-{"code": "2001", "keyword": "hello", "text_reply": "こんるし～今天也要好好陪るしあ哦❤️", "file_reply": ""}
-{"code": "2001", "keyword": "休息", "text_reply": "今天很辛苦對吧？來！るしあ給你膝枕吧～❤️", "file_reply": ""}
-{"code": "2001", "keyword": "早抖", "text_reply": "おつるし～祝你發個boing boing夢 <:rushia_nya:937372390705487984>", "file_reply": ""}
-{"code": "2001", "keyword": "瞓", "text_reply": "今天很辛苦對吧？來！るしあ來給你恢復元氣～❤️", "file_reply": ""}
-{"code": "2001", "keyword": "おつるし", "text_reply": "今天辛苦了～今晚要和るしあ睡嗎❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "こんるし", "text_reply": "こんるし～今天也要好好努力哦～るしあ會為你加油的<:rushia_nya:937372390705487984>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "早晨", "text_reply": "こんるし～今天讓るしあ好好陪你吧～<:rushia_nya:937372390705487984>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "早安", "text_reply": "こんるし～今天也要好好努力哦～るしあ會為你加油的<:rushia_nya:937372390705487984>", "file_reply": ""}
+{"id": "", "code": "3001", "keyword": "hi", "text_reply": "こんるし～今天也要好好陪るしあ哦❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "hello", "text_reply": "こんるし～今天也要好好陪るしあ哦❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "休息", "text_reply": "今天很辛苦對吧？來！るしあ給你膝枕吧～❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "早抖", "text_reply": "おつるし～祝你發個boing boing夢 <:rushia_nya:937372390705487984>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "瞓", "text_reply": "今天很辛苦對吧？來！るしあ來給你恢復元氣～❤️", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "おつるし", "text_reply": "今天辛苦了～今晚要和るしあ睡嗎❤️", "file_reply": ""}
 
-{"code": "2001", "keyword": "砧板", "text_reply": "<@> 今晚送你去見羽衣媽媽 <a:rushia_dare:939596214796697661>", "file_reply": ""}
-{"code": "2001", "keyword": "平板", "text_reply": "<@> 今晚瞓雪櫃 <:rushia_yandere:933141388147691570> ", "file_reply": ""}
-{"code": "2001", "keyword": "雪櫃", "text_reply": "你係咪好掛住我部雪櫃呢 <:rushia_yandere:933141388147691570>", "file_reply": ""}
-{"code": "2001", "keyword": "冰箱", "text_reply": "<@> 係咪好想入雪櫃？今晚你去陪羽衣媽媽啦，佢好寂寞<:rushia_yandere:933141388147691570> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "列車", "text_reply": "発車10秒まえ～走れ！ガチ恋列車ー♪ 🚃", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "巴士", "text_reply": "発車10秒まえ～走れ！ガチ恋バスー♪ 🚌", "file_reply": ""}
 
-{"code": "2001", "keyword": "平", "text_reply": "吓？你講多次？<:rushia_open_eyes:942503280121085992> ", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "砧板", "text_reply": "<@> 今晚送你去見羽衣媽媽 <a:rushia_dare:939596214796697661>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "平板", "text_reply": "<@> 今晚瞓雪櫃 <:rushia_yandere:933141388147691570> ", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "雪櫃", "text_reply": "你係咪好掛住我部雪櫃呢 <:rushia_yandere:933141388147691570>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "冰箱", "text_reply": "<@> 係咪好想入雪櫃？今晚你去陪羽衣媽媽啦，佢好寂寞<:rushia_yandere:933141388147691570> ", "file_reply": ""}
 
-{"code": "2000", "keyword": "星街", "text_reply": "<@> 今天也很小 <:rushia_yandere4:940325425538797598>", "file_reply": ""}
-{"code": "2001", "keyword": "團長", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
-{"code": "2001", "keyword": "船長", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
-{"code": "2001", "keyword": "marin", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
-{"code": "2001", "keyword": "noel", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
-{"code": "2001", "keyword": "ぺこ", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
-{"code": "2001", "keyword": "peko", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
-{"code": "2001", "keyword": "ねね", "text_reply": "<@> 呢個女人係邊個 <a:rushia_dare:939596214796697661>", "file_reply": ""}
-{"code": "2001", "keyword": "nene", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "平", "text_reply": "吓？你講多次？<:rushia_open_eyes:942503280121085992> ", "file_reply": ""}
+
+{"id": "", "code": "2000", "keyword": "星街", "text_reply": "<@> 今天也很小 <:rushia_yandere4:940325425538797598>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "團長", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "船長", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "marin", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "noel", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "ぺこ", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "peko", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "ねね", "text_reply": "<@> 呢個女人係邊個 <a:rushia_dare:939596214796697661>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "nene", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
 
 
-{"code": "2001", "keyword": "かなた", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
-{"code": "2001", "keyword": "kanata", "text_reply": "<@> 呢個女人係邊個 <a:rushia_dare:939596214796697661>", "file_reply": ""}
-{"code": "2001", "keyword": "fubuki", "text_reply": "<@> 呢個女人係邊個 <a:rushia_dare:939596214796697661>", "file_reply": ""}
-{"code": "2001", "keyword": "fbk", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
-{"code": "2001", "keyword": "るしあ", "text_reply": "<@> 你咁掛住我，我好開心❤️❤️❤️ <:rushia_nya:937372390705487984>", "file_reply": ""}
-{"code": "2101", "keyword": "rushia", "text_reply": "<@> 我好掛住你，你喺邊呀❤️❤️❤️ <:rushia_yandere:933141388147691570> ", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "かなた", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "kanata", "text_reply": "<@> 呢個女人係邊個 <a:rushia_dare:939596214796697661>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "fubuki", "text_reply": "<@> 呢個女人係邊個 <a:rushia_dare:939596214796697661>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "fbk", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
+{"id": "", "code": "2001", "keyword": "るしあ", "text_reply": "<@> 你咁掛住我，我好開心❤️❤️❤️ <:rushia_nya:937372390705487984>", "file_reply": ""}
+{"id": "", "code": "2101", "keyword": "rushia", "text_reply": "<@> 我好掛住你，你喺邊呀❤️❤️❤️ <:rushia_yandere:933141388147691570> ", "file_reply": ""}
 
-{"code": "2000", "keyword": "boing", "text_reply": "<@>", "file_reply": "https://cdn.discordapp.com/attachments/935999729672802344/945597218180702238/unknown.png"}
+{"id": "", "code": "2000", "keyword": "boing", "text_reply": "<@>", "file_reply": "https://cdn.discordapp.com/attachments/935999729672802344/945597218180702238/unknown.png"}
 
-{"code": "2001", "keyword": "dogwong", "text_reply": "💜💚", "file_reply": ""}
-
+{"id": "", "code": "2001", "keyword": "dogwong", "text_reply": "💜💚", "file_reply": ""}
