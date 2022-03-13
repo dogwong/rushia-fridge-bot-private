@@ -273,9 +273,10 @@ async function init(discordInstance) {
           // channel filter
           if (trigger.globalEnable || (!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
             let reply = `${trigger.reply.replace("<@>", `<@${message.author.id}>`)}`;
-            let options = {
-              content: replyPrefix + `${reply}`,
-            };
+            let options = {};
+            if (reply != "" || replyPrefix != "") {
+              options.content = replyPrefix + `${reply}`;
+            }
             if (trigger.fileReply) {
               options.files = [trigger.fileReply];
             }
