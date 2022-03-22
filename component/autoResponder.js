@@ -223,6 +223,23 @@ async function init(discordInstance) {
         }
 
       } else if (!isTestMode || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
+        const globalBlacklistedChannel = [
+          "943212249290526820", // 身份組申請須知
+          "955493535992389642", // vtuber
+          "943211796481859614", // 烤肉man
+          "943211745491681360",
+          "946037454681571329", 
+          "943211713707278406",
+          "948282427472756806",
+
+          "933396005997641779",
+          "929093090243923990",
+          "955513867356753930",
+          "929092730250997770",
+          "933621794374565909",
+          "929092873213837402",
+        ].includes(message.channelId);
+
         const allowedChannel = [
           "943436102134530098", // 指令
           "935999729672802344", // 試bot
@@ -271,7 +288,7 @@ async function init(discordInstance) {
           }
 
           // channel filter
-          if (trigger.globalEnable || (!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
+          if ((trigger.globalEnable && !globalBlacklistedChannel) || (!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
             let reply = `${trigger.reply.replace("<@>", `<@${message.author.id}>`)}`;
             let options = {};
             if (reply != "" || replyPrefix != "") {
