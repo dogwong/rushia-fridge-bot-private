@@ -241,17 +241,22 @@ async function init(discordInstance) {
         ].includes(message.channelId);
 
         const allowedChannel = [
-          "943436102134530098", // 指令
-          "935999729672802344", // 試bot
-          "939808103837347860", // 試bot - test
-          "923190510670213121", // v豚討論區
-          "933306836864614421", // 雜談
-          "931163765590872095", // 練舞室
-          "932667071618228276", // 不可以澀澀！
-          "923306378020421672", // 點唱站
-          "931180514293981284", // 可以澀澀！
-          "923557754667421726", // 眾籌參與者討論區
-          "943172731338366996", // 打氣區
+          "943436102134530098", // #試bot用指令區-bot-test
+          "935999729672802344", // #討論bot用-bot-disz
+          "943172731338366996", // #打氣區
+          "923190510670213121", // #acg-v豚討論區
+          "958045407685013534", // #meme分享區
+          "959011908525105183", // #美食分享區
+          "932667071618228276", // #香圖分享區
+          "931163765590872095", // #練舞室
+          "933306836864614421", // #雜談
+          "957317610834366555", // #english-only
+          "957318106525597696", // #日本語勉強しよう
+          "923306378020421672", // #點唱站
+          "931180514293981284", // #可以澀澀！
+          "923557754667421726", // #露企劃眾籌者討論區
+          "953681271949754418", // #nene眾籌者討論區
+          "943181169913106432", // #星街眾籌者討論區
         ].includes(message.channelId);
         const contentLower = content.toLowerCase();
         const contentWithoutEmoji = contentLower.replace(/<a?:\w+:\d+/g, "");
@@ -316,7 +321,7 @@ async function init(discordInstance) {
 
   client.on("interactionCreate", async interaction => {
     if (!interaction.isButton()) return;
-    console.log(interaction);
+    // console.log(interaction);
 
     /**
      * @type {import("discord.js").Message}
