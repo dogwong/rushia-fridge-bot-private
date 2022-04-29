@@ -1,10 +1,10 @@
-{"id": "", "code": "2010", "keyword": "若", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
-{"id": "", "code": "2010", "keyword": "凌", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
-{"id": "", "code": "2010", "keyword": "wa ka", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
-{"id": "", "code": "2010", "keyword": "waka", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
-{"id": "", "code": "2010", "keyword": "ryou", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": " "}
-{"id": "", "code": "2010", "keyword": "わか", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
-{"id": "", "code": "2010", "keyword": "りょう", "text_reply": "<:word_i03_waka:943885404711571476> <:word_i04_ryou:943885404556386324> <:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224>", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "若", "text_reply": "<:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "凌", "text_reply": "<:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "wa ka", "text_reply": "<:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "waka", "text_reply": "<:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "ryou", "text_reply": "<:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": " "}
+{"id": "", "code": "2010", "keyword": "わか", "text_reply": "<:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224> ", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "りょう", "text_reply": "<:word_i14_ten:946834361498624030> <:word_i15_shi:946834369547485224>", "file_reply": ""}
 {"id": "", "code": "2010", "keyword": "猩", "text_reply": "<:ppt_gorilla:937763398303776889> ", "file_reply": ""}
 {"id": "", "code": "2010", "keyword": "gorilla", "text_reply": "<:ppt_gorilla:937763398303776889> ", "file_reply": ""}
 
@@ -63,3 +63,4 @@
 {"id": "", "code": "2000", "keyword": "boing", "text_reply": "<@>", "file_reply": "https://cdn.discordapp.com/attachments/935999729672802344/945597218180702238/unknown.png"}
 
 {"id": "", "code": "2001", "keyword": "dogwong", "text_reply": "💜💚", "file_reply": ""}
+
