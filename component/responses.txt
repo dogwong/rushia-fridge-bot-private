@@ -42,7 +42,7 @@
 
 {"id": "", "code": "2001", "keyword": "平", "text_reply": "吓？你講多次？<:rushia_open_eyes:942503280121085992> ", "file_reply": ""}
 
-{"id": "", "code": "2000", "keyword": "星街", "text_reply": "<@> 今天也很小 <:rushia_yandere4:940325425538797598>", "file_reply": ""}
+{"id": "", "code": "2010", "keyword": "星街", "text_reply": "<@> 今天也很小 <:rushia_yandere4:940325425538797598>", "file_reply": ""}
 {"id": "", "code": "2001", "keyword": "團長", "text_reply": "你係咪唔要るしあ啦<:rushia_cry:933156110741946408>", "file_reply": ""}
 {"id": "", "code": "2001", "keyword": "船長", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
 {"id": "", "code": "2001", "keyword": "marin", "text_reply": "<@> 呢個女人係邊個<a:rushia_dare:939596214796697661>", "file_reply": ""}
@@ -63,4 +63,3 @@
 {"id": "", "code": "2000", "keyword": "boing", "text_reply": "<@>", "file_reply": "https://cdn.discordapp.com/attachments/935999729672802344/945597218180702238/unknown.png"}
 
 {"id": "", "code": "2001", "keyword": "dogwong", "text_reply": "💜💚", "file_reply": ""}
-
