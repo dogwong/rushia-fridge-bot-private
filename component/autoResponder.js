@@ -280,7 +280,9 @@ async function init(discordInstance) {
           }
 
           // channel filter
-          if ((trigger.globalEnable && !globalBlacklistedChannel) || (!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
+          // update: only allowed channels, disable global enable
+          if ((!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
+            // if ((trigger.globalEnable && !globalBlacklistedChannel) || (!isTestMode && allowedChannel && isBotEnabled) || (isTestMode && message.channelId === COMMAND_CHANNEL)) {
             let reply = `${trigger.reply.replace("<@>", `<@${message.author.id}>`)}`;
             let options = {};
             if (reply != "" || replyPrefix != "") {
