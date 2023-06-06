@@ -44,7 +44,6 @@ RUN echo $buildno > buildinfo
 RUN echo $commit_sha >> buildinfo
 RUN echo $(date +%s) >> buildinfo
 
-# RUN cat buildinfo
 RUN echo buildno = $buildno
 RUN echo sha = $commit_sha
 RUN echo build info = 
