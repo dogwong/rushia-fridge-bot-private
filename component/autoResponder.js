@@ -126,7 +126,7 @@ async function init(discordInstance) {
     replyPrefix = `${STRINGS.test_mode} `;
     await channelText.send(replyPrefix + `${STRINGS.startup} (bot started up)\n自動回覆條件 ${responseList.length} 個`);
   } else {
-    await channelText.send(replyPrefix + `${STRINGS.startup} (bot started up)\nversion ${buildVersion} build ${buildNo}\nrev \`${buildCommitId.substring(0, 7)}\` @ ${buildTime.utcOffset(8).format("YYYY-MM-DD HH:mm")}\n自動回覆條件 ${responseList.length} 個`);
+    await channelText.send(replyPrefix + `${STRINGS.startup} (bot started up)\nv ${buildVersion} rev \`${buildCommitId.substring(0, 7)}\`\nbuild ${buildNo} @ ${buildTime.utcOffset(8).format("YYYY-MM-DD HH:mm")}\n自動回覆條件 ${responseList.length} 個`);
   }
 
   process.on('SIGINT', async function () {
