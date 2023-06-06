@@ -20,7 +20,7 @@ ARG buildno=0
 ARG commit_sha
 # ENV APP_VERSION=$BUILD_NUM
 
-VOLUME [ "/usr/src/rushia-fridge-bot" ]
+# VOLUME [ "/usr/src/rushia-fridge-bot" ]
 WORKDIR /usr/src/rushia-fridge-bot
 
 # Install app dependencies
