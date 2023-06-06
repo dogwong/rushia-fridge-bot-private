@@ -18,7 +18,7 @@ jobs:
 
     - name: Debug
       run: |
-        echo "github.ref -> ${{ github.ref }}
+        echo "github.ref -> ${{ github.ref }}"
         echo "github.run_number -> ${{ github.run_number }}"
     
     - name: Log in to Docker Registry
