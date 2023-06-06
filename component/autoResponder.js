@@ -5,6 +5,7 @@ dayjs.extend(utc);
 const simpleGit = require('simple-git')();
 const fs = require("fs");
 const sleep = require('util').promisify(setTimeout);
+const pjson = require('../package.json');
 
 const STRINGS = require("./strings.json");
 
@@ -24,46 +25,56 @@ async function init(discordInstance) {
 
   console.log("autoResponder init");
 
-  console.log("Reading git commit info...");
-  let botCommitId = "";
-  /** @type {import("dayjs").Dayjs} */
-  let botLastUpdate;
-  let botCommitCount = "";
-  await new Promise((resolve, reject) => {
-    simpleGit.revparse(["HEAD"], (err, result) => {
-      if (err) {
-        console.log("get commit id failed");
-      } else {
-        botCommitId = result;
-        console.log("rev", result);
-      }
-      resolve();
-    });
-  });
-  await new Promise((resolve, reject) => {
-    simpleGit.log({"-1": null}, (err, result) => {
-      if (err) {
-        console.log("get commit time failed");
-      } else {
-        botLastUpdate = dayjs(result.latest.date, "YYYY-MM-DD HH:mm:ss Z");
-        console.log("date", result.latest.date);
-      }
-      resolve();
-    });
-  });
-  await new Promise((resolve, reject) => {
-    simpleGit.raw(["rev-list", "--count", "HEAD"], (err, result) => {
-      if (err) {
-        console.log("get commit count failed");
-      } else {
-        botCommitCount = (result).trim()
-        console.log("count", result);
-      }
-      resolve();
-    });
-  });
+  let buildinfoTxt = fs.readFileSync("./buildinfo", "utf8");
+  let buildinfoLines = buildinfoTxt.split("\n");
+  let buildNo = buildinfoLines[0] || "unknown";
+  let buildCommitId = buildinfoLines[1] || "";
+  let buildTime = dayjs(buildinfoLines[2] * 1000);
+  let buildVersion = pjson.version || process.env.APP_VERSION || "unknown";
 
-  console.log("Read git commit info done", botCommitId, botCommitCount, botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm"));
+  console.log(`version ${buildVersion} @ ${buildTime.format("YYYY-MM-DD HH:mm:ss Z")}`);
+
+
+  // console.log("Reading git commit info...");
+  // let botCommitId = "";
+  // /** @type {import("dayjs").Dayjs} */
+  // let botLastUpdate;
+  // let botCommitCount = "";
+  // await new Promise((resolve, reject) => {
+  //   simpleGit.revparse(["HEAD"], (err, result) => {
+  //     if (err) {
+  //       console.log("get commit id failed");
+  //     } else {
+  //       botCommitId = result;
+  //       console.log("rev", result);
+  //     }
+  //     resolve();
+  //   });
+  // });
+  // await new Promise((resolve, reject) => {
+  //   simpleGit.log({"-1": null}, (err, result) => {
+  //     if (err) {
+  //       console.log("get commit time failed");
+  //     } else {
+  //       botLastUpdate = dayjs(result.latest.date, "YYYY-MM-DD HH:mm:ss Z");
+  //       console.log("date", result.latest.date);
+  //     }
+  //     resolve();
+  //   });
+  // });
+  // await new Promise((resolve, reject) => {
+  //   simpleGit.raw(["rev-list", "--count", "HEAD"], (err, result) => {
+  //     if (err) {
+  //       console.log("get commit count failed");
+  //     } else {
+  //       botCommitCount = (result).trim()
+  //       console.log("count", result);
+  //     }
+  //     resolve();
+  //   });
+  // });
+
+  // console.log("Read git commit info done", botCommitId, botCommitCount, botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm"));
 
   console.log("Reading auto responses...");
   let responseTxt = fs.readFileSync("./component/responses.txt", "utf8");
@@ -92,13 +103,13 @@ async function init(discordInstance) {
         fileReply: responseObj.file_reply.trim(),
       };
     } catch (error) {
-      console.log("parse response failed", lastResponse, error);
+      // console.log("parse response failed", lastResponse, error);
     }
     
     return null;
   }).filter(response => response);
 
-  console.log(responseList);
+  // console.log(responseList);
 
 
   let isBotEnabled = true;
@@ -114,7 +125,7 @@ async function init(discordInstance) {
     replyPrefix = `${STRINGS.test_mode} `;
     await channelText.send(replyPrefix + `${STRINGS.startup} (bot started up)\n自動回覆條件 ${responseList.length} 個`);
   } else {
-    await channelText.send(replyPrefix + `${STRINGS.startup} (bot started up)\nrev \`${botCommitId.substring(0, 7)}\` , version ${botCommitCount} @ ${botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm")}\n自動回覆條件 ${responseList.length} 個`);
+    await channelText.send(replyPrefix + `${STRINGS.startup} (bot started up)\nversion ${buildVersion} build ${buildNo}\nrev ${buildCommitId.substring(0, 7)} @ ${buildTime.utcOffset(8).format("YYYY-MM-DD HH:mm")}\n自動回覆條件 ${responseList.length} 個`);
   }
 
   process.on('SIGINT', async function () {
