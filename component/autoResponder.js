@@ -26,6 +26,7 @@ async function init(discordInstance) {
   console.log("autoResponder init");
 
   let buildinfoTxt = fs.readFileSync("./buildinfo", "utf8");
+  console.log("buildinfoTxt", buildinfoTxt);
   let buildinfoLines = buildinfoTxt.split("\n");
   let buildNo = buildinfoLines[0] || "unknown";
   let buildCommitId = buildinfoLines[1] || "";
