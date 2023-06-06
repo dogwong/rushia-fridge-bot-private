@@ -40,14 +40,15 @@ COPY . .
 # ENV NODE_PATH=.
 # ENTRYPOINT ["/usr/src/rushia-fridge-bot/docker-entrypoint.sh"]
 
-RUN echo "" > buildinfo
-RUN echo $buildno >> buildinfo
-RUN echo $buildsha >> buildinfo
+RUN echo $buildno > buildinfo
+RUN echo $commit_sha >> buildinfo
 RUN echo $(date +%s) >> buildinfo
 
 # RUN cat buildinfo
 RUN echo buildno = $buildno
 RUN echo sha = $commit_sha
+RUN echo build info = 
+RUN cat buildinfo
 
 CMD ["node", "index.js"]
 
