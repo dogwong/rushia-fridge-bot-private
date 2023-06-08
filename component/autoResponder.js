@@ -2,7 +2,6 @@ const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 const dayjs = require("dayjs");
 const utc = require('dayjs/plugin/utc');
 dayjs.extend(utc);
-const simpleGit = require('simple-git')();
 const fs = require("fs");
 const sleep = require('util').promisify(setTimeout);
 const pjson = require('../package.json');
@@ -35,47 +34,6 @@ async function init(discordInstance) {
 
   console.log(`version ${buildVersion} @ ${buildTime.format("YYYY-MM-DD HH:mm:ss Z")}`);
 
-
-  // console.log("Reading git commit info...");
-  // let botCommitId = "";
-  // /** @type {import("dayjs").Dayjs} */
-  // let botLastUpdate;
-  // let botCommitCount = "";
-  // await new Promise((resolve, reject) => {
-  //   simpleGit.revparse(["HEAD"], (err, result) => {
-  //     if (err) {
-  //       console.log("get commit id failed");
-  //     } else {
-  //       botCommitId = result;
-  //       console.log("rev", result);
-  //     }
-  //     resolve();
-  //   });
-  // });
-  // await new Promise((resolve, reject) => {
-  //   simpleGit.log({"-1": null}, (err, result) => {
-  //     if (err) {
-  //       console.log("get commit time failed");
-  //     } else {
-  //       botLastUpdate = dayjs(result.latest.date, "YYYY-MM-DD HH:mm:ss Z");
-  //       console.log("date", result.latest.date);
-  //     }
-  //     resolve();
-  //   });
-  // });
-  // await new Promise((resolve, reject) => {
-  //   simpleGit.raw(["rev-list", "--count", "HEAD"], (err, result) => {
-  //     if (err) {
-  //       console.log("get commit count failed");
-  //     } else {
-  //       botCommitCount = (result).trim()
-  //       console.log("count", result);
-  //     }
-  //     resolve();
-  //   });
-  // });
-
-  // console.log("Read git commit info done", botCommitId, botCommitCount, botLastUpdate.utcOffset(8).format("YYYY-MM-DD HH:mm"));
 
   console.log("Reading auto responses...");
   let responseTxt = fs.readFileSync("./component/responses.txt", "utf8");
@@ -110,7 +68,7 @@ async function init(discordInstance) {
     return null;
   }).filter(response => response);
 
-  // console.log(responseList);
+  console.log(`${responseList.length} responses loaded`);
 
 
   let isBotEnabled = true;

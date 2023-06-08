@@ -14,13 +14,10 @@
 # docker build --no-cache -t rushia-fridge-bot:1.0.1 -t rushia-fridge-bot:latest .
 
 FROM node:16-alpine3.11
-# RUN apk add git
 
 ARG buildno=0
 ARG commit_sha
-# ENV APP_VERSION=$BUILD_NUM
 
-# VOLUME [ "/usr/src/rushia-fridge-bot" ]
 WORKDIR /usr/src/rushia-fridge-bot
 
 # Install app dependencies
@@ -34,8 +31,6 @@ RUN npm install
 
 # Bundle app source
 COPY . .
-
-# COPY docker-entrypoint.sh /
 
 # ENV NODE_PATH=.
 # ENTRYPOINT ["/usr/src/rushia-fridge-bot/docker-entrypoint.sh"]
