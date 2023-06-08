@@ -51,5 +51,5 @@ jobs:
           registry.wong.dog:5000/rushia-fridge-bot:b${{ github.run_number }}
           registry.wong.dog:5000/rushia-fridge-bot:latest
         labels: |
-          ${{ github.sha }}
+          sha=${{ github.sha }}
 
