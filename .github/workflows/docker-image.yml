@@ -2,9 +2,11 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ cicd ]
+    # branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches: [ cicd ]
+    # branches: [ master ]
 
 jobs:
 
@@ -42,7 +44,12 @@ jobs:
         context: .
         platforms: linux/amd64
         push: true
+        build-args: |
+          buildno=${{ github.run_number }}
+          commit_sha=${{ github.sha }}
         tags: |
-          registry.wong.dog:5000/rushia-fridge-bot:${{ env.NOW }}
+          registry.wong.dog:5000/rushia-fridge-bot:b${{ github.run_number }}
           registry.wong.dog:5000/rushia-fridge-bot:latest
+        labels: |
+          sha=${{ github.sha }}
 
