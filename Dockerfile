@@ -12,6 +12,7 @@
 
 # v2 hosting
 # docker build --no-cache -t rushia-fridge-bot:1.0.1 -t rushia-fridge-bot:latest .
+# docker build --no-cache --progress=plain --build-arg buildno=1 --build-arg commit_sha="test" -t rushia-fridge-bot:1.0.0 -t rushia-fridge-bot:latest .
 
 FROM node:16-alpine3.11
 

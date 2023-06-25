@@ -1,0 +1,8 @@
+version: '3.1'
+
+services:
+  bot:
+    image: 127.0.0.1:5000/rushia-fridge-bot
+    restart: always
+    env_file:
+      - .env

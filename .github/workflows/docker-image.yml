@@ -2,11 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ cicd ]
-    # branches: [ master ]
+    branches: [ master ]
   pull_request:
-    branches: [ cicd ]
-    # branches: [ master ]
+    branches: [ master ]
 
 jobs:
 
@@ -29,10 +27,6 @@ jobs:
         registry: registry.wong.dog:5000
         username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
         password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-    
-    
-    # - name: Build the Docker image
-    #   run: docker build . --file Dockerfile --tag rushia-fridge-bot:$(date +%s)
 
     - name: set NOW
       run: |
