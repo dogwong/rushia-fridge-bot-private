@@ -3,6 +3,11 @@ version: '3.1'
 services:
   bot:
     image: 127.0.0.1:5000/rushia-fridge-bot
-    restart: always
+    restart: unless-stopped
     env_file:
       - .env
+
+# for portainer stacks
+    # environment:
+    #   - NODE_ENV: ${NODE_ENV}
+    #   - DCBOT_TOKEN: ${DCBOT_TOKEN}
