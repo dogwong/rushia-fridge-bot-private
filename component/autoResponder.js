@@ -1,4 +1,4 @@
-const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+const { MessageActionRow, MessageButton, MessageEmbed, ChannelType } = require('discord.js');
 const dayjs = require("dayjs");
 const utc = require('dayjs/plugin/utc');
 dayjs.extend(utc);
@@ -151,7 +151,7 @@ async function init(discordInstance) {
           // check if channel exists
           message.guild.channels.fetch(command[1]).then(channel => {
             
-            if (channel.isText()) {
+            if (channel.type == ChannelType.GuildText) {
               const row = new MessageActionRow()
                 .addComponents(
                   new MessageButton()
@@ -315,7 +315,7 @@ async function init(discordInstance) {
       if (!channel) {
         await interaction.followUp(`錯誤: 找不到頻道 (\`${result[1]}\`) 請檢查bot是否有檢視該頻道的權限`);
         return;
-      } else if (!channel.isText()) {
+      } else if (channel.type != ChannelType.GuildText) {
         message.reply(`<#${channelId}> 不是文字頻道`);
         return;
       }
