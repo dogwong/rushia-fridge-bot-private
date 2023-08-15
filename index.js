@@ -2,9 +2,9 @@ require("dotenv").config();
 const fs = require("fs");
 const dayjs = require("dayjs");
 const cron = require("node-cron");
-const { Client, Intents, Activity } = require("discord.js");
+const { Client, Collection, Events, GatewayIntentBits, Partials, Activity, SlashCommandBuilder, REST, Routes } = require("discord.js");
 const client = new Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
 });
 
 
