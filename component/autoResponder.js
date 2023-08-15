@@ -1,4 +1,4 @@
-const { MessageActionRow, MessageButton, MessageEmbed, ChannelType } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, EmbedBuilder, ChannelType, ButtonStyle } = require('discord.js');
 const dayjs = require("dayjs");
 const utc = require('dayjs/plugin/utc');
 dayjs.extend(utc);
@@ -152,18 +152,18 @@ async function init(discordInstance) {
           message.guild.channels.fetch(command[1]).then(channel => {
             
             if (channel.type == ChannelType.GuildText) {
-              const row = new MessageActionRow()
+              const row = new ActionRowBuilder()
                 .addComponents(
-                  new MessageButton()
+                  new ButtonBuilder()
                     .setCustomId(`sd confirm`)
                     .setLabel("確定")
-                    .setStyle("PRIMARY"),
-                  new MessageButton()
+                    .setStyle(ButtonStyle.Primary),
+                  new ButtonBuilder()
                     .setCustomId(`sd cancel`)
                     .setLabel("取消")
-                    .setStyle("SECONDARY"),
+                    .setStyle(ButtonStyle.Secondary),
                 );
-              const embed = new MessageEmbed()
+              const embed = new EmbedBuilder()
                 .setColor("#77d4bc")
                 .setTitle(`確認發送`)
                 .setDescription(command[2])
