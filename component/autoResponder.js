@@ -151,7 +151,7 @@ async function init(discordInstance) {
           // check if channel exists
           message.guild.channels.fetch(command[1]).then(channel => {
             
-            if (channel.type == ChannelType.GuildText) {
+            if (channel.type == ChannelType.GuildText || channel.type == ChannelType.GuildForum || channel.type == ChannelType.PrivateThread || channel.type == ChannelType.PublicThread) {
               const row = new ActionRowBuilder()
                 .addComponents(
                   new ButtonBuilder()
@@ -315,8 +315,8 @@ async function init(discordInstance) {
       if (!channel) {
         await interaction.followUp(`錯誤: 找不到頻道 (\`${result[1]}\`) 請檢查bot是否有檢視該頻道的權限`);
         return;
-      } else if (channel.type != ChannelType.GuildText) {
-        message.reply(`<#${channelId}> 不是文字頻道`);
+      } else if (channel.type != ChannelType.GuildText && channel.type != ChannelType.GuildForum && channel.type != ChannelType.PrivateThread && channel.type != ChannelType.PublicThread) {
+        interaction.followUp(`<#${channelId}> 不是文字頻道`);
         return;
       }
 
